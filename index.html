@@ -55,14 +55,12 @@
     background-color: #1a1113;
   }
 
-  /* ===== Третья секция — короткая ===== */
   .section--three {
     height: auto;
     min-height: 54vh;
     padding: clamp(44px, 8vh, 90px) clamp(16px, 6vw, 60px);
   }
 
-  /* ===== Четвёртая секция — Локация ===== */
   .section--four {
     height: 100vh;
     height: 100svh;
@@ -121,7 +119,7 @@
   .content--four {
     color: var(--burgundy);
     max-width: 780px;
-    gap: clamp(10px, 2vh, 22px);
+    gap: clamp(8px, 1.6vh, 18px);
   }
 
   .fade {
@@ -159,10 +157,10 @@
     filter: blur(0);
   }
 
-  .delay-1 { transition-delay: 0.45s; }
-  .delay-2 { transition-delay: 0.85s; }
-  .delay-3 { transition-delay: 1.2s; }
-  .delay-4 { transition-delay: 1.55s; }
+  .delay-1 { transition-delay: 0.35s; }
+  .delay-2 { transition-delay: 0.65s; }
+  .delay-3 { transition-delay: 0.95s; }
+  .delay-4 { transition-delay: 1.25s; }
 
   /* ===== Первая секция ===== */
   .wedding-day {
@@ -327,9 +325,21 @@
     letter-spacing: 0.01em;
   }
 
+  .location-address {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.95rem, 2.4vw, 1.2rem);
+    letter-spacing: 0.14em;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin-top: -2px;
+    margin-bottom: clamp(4px, 1vh, 10px);
+  }
+
+  /* Фото — немного меньше */
   .location-photo {
     display: block;
-    width: clamp(220px, 68vw, 440px);
+    width: clamp(190px, 58vw, 360px);
     max-width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
@@ -458,8 +468,12 @@
     .location-head {
       font-size: clamp(2rem, 8.4vw, 3.2rem);
     }
+    .location-address {
+      font-size: clamp(0.9rem, 3.6vw, 1.05rem);
+      letter-spacing: 0.1em;
+    }
     .location-photo {
-      width: clamp(220px, 80vw, 380px);
+      width: clamp(180px, 68vw, 320px);
     }
     .location-btn {
       font-size: clamp(0.8rem, 3.4vw, 0.95rem);
@@ -500,7 +514,7 @@
       font-size: clamp(1.85rem, 8vw, 2.6rem);
     }
     .location-photo {
-      width: 82vw;
+      width: 70vw;
     }
   }
 
@@ -558,13 +572,17 @@
 
     /* Локация в ландшафте — компактнее */
     .content--four {
-      gap: 8px;
+      gap: 6px;
     }
     .location-head {
       font-size: clamp(1.4rem, 5.4vh, 2.4rem);
     }
+    .location-address {
+      font-size: clamp(0.7rem, 2.2vh, 0.9rem);
+      margin-bottom: 2px;
+    }
     .location-photo {
-      width: clamp(180px, 42vw, 320px);
+      width: clamp(160px, 36vw, 280px);
       aspect-ratio: 16 / 9;
     }
     .location-btn {
@@ -597,7 +615,8 @@
     .timing-time { font-size: 1.5rem; }
     .timing-event { font-size: 1.85rem; }
     .location-head { font-size: 4.6rem; }
-    .location-photo { width: 440px; }
+    .location-address { font-size: 1.2rem; }
+    .location-photo { width: 360px; }
     .location-btn { font-size: 1rem; }
   }
 </style>
@@ -681,17 +700,21 @@
       <div class="content content--four">
         <h2 class="location-head fade-in">Локация</h2>
 
+        <!-- Короткий адрес — замените на свой -->
+        <p class="location-address fade-in delay-1">
+          ул. Пушкина, 12 · Киев
+        </p>
+
         <img
-          class="location-photo fade-in delay-1"
+          class="location-photo fade-in delay-2"
           src="Изображение 12.jpeg"
           alt="Фото локации"
           loading="lazy"
           decoding="async"
         >
 
-        <!-- Замените ссылку ниже на адрес вашей локации -->
         <a
-          class="location-btn fade-in delay-2"
+          class="location-btn fade-in delay-3"
           href="https://maps.google.com/?q=Ваш+адрес"
           target="_blank"
           rel="noopener noreferrer"
