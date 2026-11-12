@@ -62,7 +62,7 @@
     padding: clamp(44px, 8vh, 90px) clamp(16px, 6vw, 60px);
   }
 
-  /* ===== Четвёртая секция — закрывающая ===== */
+  /* ===== Четвёртая секция — Локация ===== */
   .section--four {
     height: 100vh;
     height: 100svh;
@@ -121,7 +121,7 @@
   .content--four {
     color: var(--burgundy);
     max-width: 780px;
-    gap: clamp(12px, 2.4vh, 24px);
+    gap: clamp(10px, 2vh, 22px);
   }
 
   .fade {
@@ -317,8 +317,8 @@
     line-height: 1.3;
   }
 
-  /* ===== Четвёртая секция — закрывающая ===== */
-  .closing-head {
+  /* ===== Четвёртая секция — Локация ===== */
+  .location-head {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 400;
@@ -327,22 +327,42 @@
     letter-spacing: 0.01em;
   }
 
-  .closing-text {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-size: clamp(1.05rem, 2.8vw, 1.4rem);
-    line-height: 1.75;
-    letter-spacing: 0.02em;
-    max-width: 30em;
+  .location-photo {
+    display: block;
+    width: clamp(220px, 68vw, 440px);
+    max-width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.28);
+    -webkit-user-select: none;
+    user-select: none;
   }
 
-  .closing-sign {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+  .location-btn {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    font-size: clamp(1.25rem, 3.6vw, 1.9rem);
-    letter-spacing: 0.02em;
-    margin-top: clamp(6px, 1.4vh, 14px);
+    font-size: clamp(0.85rem, 3vw, 1rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--burgundy);
+    border: 1px solid currentColor;
+    background-color: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    padding: 0.95em 2.2em;
+    border-radius: 999px;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    cursor: pointer;
+  }
+
+  .location-btn:hover,
+  .location-btn:focus-visible {
+    background-color: var(--burgundy);
+    color: #ffffff;
+    outline: none;
   }
 
   /* ===== Reduced motion ===== */
@@ -435,15 +455,15 @@
       font-size: clamp(1.2rem, 4.6vw, 1.55rem);
     }
 
-    .closing-head {
+    .location-head {
       font-size: clamp(2rem, 8.4vw, 3.2rem);
     }
-    .closing-text {
-      font-size: clamp(1.05rem, 4.2vw, 1.3rem);
-      line-height: 1.7;
+    .location-photo {
+      width: clamp(220px, 80vw, 380px);
     }
-    .closing-sign {
-      font-size: clamp(1.2rem, 4.6vw, 1.6rem);
+    .location-btn {
+      font-size: clamp(0.8rem, 3.4vw, 0.95rem);
+      padding: 0.9em 1.9em;
     }
   }
 
@@ -476,14 +496,11 @@
     .timing-event {
       font-size: clamp(1.1rem, 4.2vw, 1.35rem);
     }
-    .closing-head {
+    .location-head {
       font-size: clamp(1.85rem, 8vw, 2.6rem);
     }
-    .closing-text {
-      font-size: clamp(1rem, 4vw, 1.2rem);
-    }
-    .closing-sign {
-      font-size: clamp(1.1rem, 4.2vw, 1.5rem);
+    .location-photo {
+      width: 82vw;
     }
   }
 
@@ -538,15 +555,21 @@
     .timing-event {
       font-size: clamp(0.95rem, 3vh, 1.25rem);
     }
-    .closing-head {
+
+    /* Локация в ландшафте — компактнее */
+    .content--four {
+      gap: 8px;
+    }
+    .location-head {
       font-size: clamp(1.4rem, 5.4vh, 2.4rem);
     }
-    .closing-text {
-      font-size: clamp(0.85rem, 2.6vh, 1.05rem);
-      line-height: 1.5;
+    .location-photo {
+      width: clamp(180px, 42vw, 320px);
+      aspect-ratio: 16 / 9;
     }
-    .closing-sign {
-      font-size: clamp(1rem, 3vh, 1.4rem);
+    .location-btn {
+      font-size: clamp(0.7rem, 2.2vh, 0.9rem);
+      padding: 0.75em 1.6em;
     }
   }
 
@@ -573,9 +596,9 @@
     .timing-head { font-size: 4.2rem; }
     .timing-time { font-size: 1.5rem; }
     .timing-event { font-size: 1.85rem; }
-    .closing-head { font-size: 4.6rem; }
-    .closing-text { font-size: 1.4rem; }
-    .closing-sign { font-size: 1.9rem; }
+    .location-head { font-size: 4.6rem; }
+    .location-photo { width: 440px; }
+    .location-btn { font-size: 1rem; }
   }
 </style>
 </head>
@@ -651,18 +674,28 @@
       </div>
     </section>
 
-    <!-- === Секция 4: Закрывающая === -->
+    <!-- === Секция 4: Локация === -->
     <section class="section section--four">
       <div class="section__bg bg-four"></div>
 
       <div class="content content--four">
-        <h2 class="closing-head fade-in">До скорой встречи!</h2>
+        <h2 class="location-head fade-in">Локация</h2>
 
-        <p class="closing-text fade-in delay-1">
-          Мы будем счастливы разделить этот день с вами.
-        </p>
+        <img
+          class="location-photo fade-in delay-1"
+          src="Изображение 12.jpeg"
+          alt="Фото локации"
+          loading="lazy"
+          decoding="async"
+        >
 
-        <p class="closing-sign fade-in delay-2">С любовью, Михаил и Алеся</p>
+        <!-- Замените ссылку ниже на адрес вашей локации -->
+        <a
+          class="location-btn fade-in delay-2"
+          href="https://maps.google.com/?q=Ваш+адрес"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Показать на карте</a>
       </div>
     </section>
   </main>
