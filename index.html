@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding day — Михаил и Алеся</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6vh 6vw;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    background-color: #1a1113; /* запасной цвет, пока грузится фото */
+  }
+
+  /* Фон — фото 7.jpeg, без наложений и эффектов */
+  .bg {
+    position: fixed;
+    inset: 0;
+    background-image: url('7.jpeg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  /* Контент */
+  .content {
+    text-align: center;
+    color: #7A1F2B;              /* бордовый */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(14px, 2.4vh, 28px);
+    max-width: 1100px;
+  }
+
+  /* Общая анимация появления */
+  .fade {
+    opacity: 0;
+    animation: fadeUp 2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    will-change: opacity, transform, filter;
+    /* лёгкая тень только у текста, чтобы читался на любом фоне */
+    text-shadow: 0 1px 14px rgba(255, 255, 255, 0.28);
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(26px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  /* 1. Wedding day */
+  .wedding-day {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.75rem, 2.2vw, 1.05rem);
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    padding-left: 0.55em; /* компенсация letter-spacing */
+    animation-delay: 0.5s;
+  }
+
+  /* 2. Имена */
+  .names {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2.4rem, 8.5vw, 6rem);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.25em;
+    animation-delay: 1.6s;
+  }
+
+  .names .amp {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 0.55em;
+    opacity: 0.75;
+    transform: translateY(-0.08em);
+  }
+
+  /* Тонкая линия-разделитель */
+  .divider {
+    width: clamp(60px, 12vw, 130px);
+    height: 1px;
+    background: currentColor;
+    opacity: 0.45;
+    animation-delay: 2.6s;
+    text-shadow: none;
+  }
+
+  /* 3. Дата */
+  .date {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.95rem, 3vw, 1.5rem);
+    letter-spacing: 0.42em;
+    padding-left: 0.42em;
+    animation-delay: 3.2s;
+  }
+
+  /* Плавное появление всей страницы */
+  body {
+    animation: pageIn 1.2s ease both;
+  }
+  @keyframes pageIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* Уважение к настройкам пользователя */
+  @media (prefers-reduced-motion: reduce) {
+    .fade, body {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+
+  /* Мобильные */
+  @media (max-width: 480px) {
+    .names {
+      flex-direction: column;
+      gap: 0.05em;
+    }
+    .names .amp {
+      font-size: 0.45em;
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="bg"></div>
+
+  <main class="content">
+    <div class="fade wedding-day">Wedding day</div>
+
+    <h1 class="fade names">
+      <span>Михаил</span>
+      <span class="amp">и</span>
+      <span>Алеся</span>
+    </h1>
+
+    <div class="fade divider"></div>
+
+    <div class="fade date">12.02.2027</div>
+  </main>
+
+  <script>
+    // Необязательно: небольшой "дыхательный" эффект для текста после появления
+    // (никак не влияет на изображение фона)
+    window.addEventListener('load', () => {
+      const names = document.querySelector('.names');
+      if (!names) return;
+
+      // запускаем мягкое покачивание только после завершения появления
+      setTimeout(() => {
+        names.style.transition = 'transform 6s ease-in-out';
+        names.style.transform = 'translateY(-3px)';
+        setTimeout(() => { names.style.transform = 'translateY(0)'; }, 3000);
+      }, 3800);
+    });
+  </script>
+
+</body>
+</html>
