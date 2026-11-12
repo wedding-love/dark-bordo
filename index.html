@@ -55,11 +55,11 @@
     background-color: #1a1113;
   }
 
-  /* ===== Третья секция — «обрезана наполовину» ===== */
+  /* ===== Третья секция — фон обрезан по высоте и сверху ===== */
   .section--three {
     height: auto;
-    min-height: 58vh;
-    padding: clamp(40px, 7vh, 80px) clamp(16px, 6vw, 60px);
+    min-height: 54vh;
+    padding: clamp(44px, 8vh, 90px) clamp(16px, 6vw, 60px);
   }
 
   .section__bg {
@@ -76,7 +76,12 @@
 
   .bg-one   { background-image: url('Изображение 7.jpeg'); }
   .bg-two   { background-image: url('Изображение 9.jpeg'); }
-  .bg-three { background-image: url('Изображение 10.jpeg'); }
+
+  /* Обрезаем верх: видно больше нижней части изображения */
+  .bg-three {
+    background-image: url('Изображение 10.jpeg');
+    background-position: center 60%;
+  }
 
   .content {
     text-align: center;
@@ -103,7 +108,7 @@
     color: var(--burgundy);
     max-width: 760px;
     gap: clamp(14px, 2.4vh, 28px);
-    margin: 0; /* центрируется внутри короткой секции */
+    margin: 0;
   }
 
   .fade {
@@ -123,7 +128,6 @@
     to   { opacity: 1; }
   }
 
-  /* ===== Появление при прокрутке — более плавное и заметное ===== */
   .fade-in {
     opacity: 0;
     transform: translateY(40px);
@@ -216,7 +220,7 @@
     line-height: 1.4;
   }
 
-  /* ===== Вторая секция — приглашение ===== */
+  /* ===== Вторая секция ===== */
   .invite-head {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -236,7 +240,7 @@
     max-width: 34em;
   }
 
-  /* ===== Третья секция — Тайминг дня ===== */
+  /* ===== Третья секция ===== */
   .timing-head {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -329,7 +333,7 @@
     }
 
     .section--three {
-      min-height: 62vh;
+      min-height: 58vh;
       padding: 6vh 5vw;
     }
 
@@ -428,7 +432,7 @@
       padding: 2.5vh 4vw;
     }
     .section--three {
-      min-height: 80vh;
+      min-height: 78vh;
       padding: 3vh 4vw;
     }
     .content {
@@ -484,7 +488,7 @@
       margin-top: 8vh;
     }
     .section--three {
-      min-height: 60vh;
+      min-height: 56vh;
     }
   }
 
@@ -523,7 +527,7 @@
       </div>
     </section>
 
-    <!-- === Секция 2: Тёплое приглашение === -->
+    <!-- === Секция 2: Приглашение (текст сокращён) === -->
     <section class="section section--two">
       <div class="section__bg bg-two"></div>
 
@@ -531,15 +535,13 @@
         <p class="invite-head fade-in">Дорогие друзья и родные!</p>
 
         <p class="invite-text fade-in delay-1">
-          В нашей жизни скоро наступит самый светлый и трепетный день — день,
-          когда мы станем семьёй. И нам очень хочется, чтобы этот день был
-          наполнен не только волнением и радостью, но и вашими улыбками,
-          тёплыми словами и искренними объятиями.
+          В нашей жизни скоро наступит самый светлый и трепетный день —
+          день, когда мы станем семьёй, и нам очень хочется разделить его с вами.
         </p>
       </div>
     </section>
 
-    <!-- === Секция 3: Тайминг дня (фон обрезан примерно наполовину) === -->
+    <!-- === Секция 3: Тайминг дня === -->
     <section class="section section--three">
       <div class="section__bg bg-three"></div>
 
@@ -588,7 +590,6 @@
       },
       {
         threshold: 0.2,
-        /* срабатывает, когда элемент заходит на 12% снизу — текст появляется плавно и заметно */
         rootMargin: '0px 0px -12% 0px'
       }
     );
