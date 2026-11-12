@@ -29,24 +29,24 @@
     padding: 6vh 6vw;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
-    background-color: #1a1113; /* запасной цвет, пока грузится фото */
+    background-color: #1a1113;
+    animation: pageIn 1.2s ease both;
   }
 
-  /* Фон — фото 7.jpeg, без наложений и эффектов */
+  /* Фон — Изображение 7.jpeg, без наложений и эффектов */
   .bg {
     position: fixed;
     inset: 0;
-    background-image: url('7.jpeg');
+    background-image: url('Изображение 7.jpeg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -1;
   }
 
-  /* Контент */
   .content {
     text-align: center;
-    color: #7A1F2B;              /* бордовый */
+    color: #7A1F2B; /* бордовый */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,12 +54,10 @@
     max-width: 1100px;
   }
 
-  /* Общая анимация появления */
   .fade {
     opacity: 0;
     animation: fadeUp 2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
     will-change: opacity, transform, filter;
-    /* лёгкая тень только у текста, чтобы читался на любом фоне */
     text-shadow: 0 1px 14px rgba(255, 255, 255, 0.28);
   }
 
@@ -76,6 +74,11 @@
     }
   }
 
+  @keyframes pageIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
   /* 1. Wedding day */
   .wedding-day {
     font-family: 'Montserrat', sans-serif;
@@ -83,7 +86,7 @@
     font-size: clamp(0.75rem, 2.2vw, 1.05rem);
     letter-spacing: 0.55em;
     text-transform: uppercase;
-    padding-left: 0.55em; /* компенсация letter-spacing */
+    padding-left: 0.55em;
     animation-delay: 0.5s;
   }
 
@@ -111,7 +114,7 @@
     transform: translateY(-0.08em);
   }
 
-  /* Тонкая линия-разделитель */
+  /* Тонкая линия */
   .divider {
     width: clamp(60px, 12vw, 130px);
     height: 1px;
@@ -131,16 +134,6 @@
     animation-delay: 3.2s;
   }
 
-  /* Плавное появление всей страницы */
-  body {
-    animation: pageIn 1.2s ease both;
-  }
-  @keyframes pageIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-
-  /* Уважение к настройкам пользователя */
   @media (prefers-reduced-motion: reduce) {
     .fade, body {
       animation-duration: 0.01ms !important;
@@ -151,7 +144,6 @@
     }
   }
 
-  /* Мобильные */
   @media (max-width: 480px) {
     .names {
       flex-direction: column;
@@ -183,17 +175,16 @@
   </main>
 
   <script>
-    // Необязательно: небольшой "дыхательный" эффект для текста после появления
-    // (никак не влияет на изображение фона)
     window.addEventListener('load', () => {
       const names = document.querySelector('.names');
       if (!names) return;
 
-      // запускаем мягкое покачивание только после завершения появления
       setTimeout(() => {
         names.style.transition = 'transform 6s ease-in-out';
         names.style.transform = 'translateY(-3px)';
-        setTimeout(() => { names.style.transform = 'translateY(0)'; }, 3000);
+        setTimeout(() => {
+          names.style.transform = 'translateY(0)';
+        }, 3000);
       }, 3800);
     });
   </script>
