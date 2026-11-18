@@ -141,12 +141,12 @@ body {
 .fade-in,
 .divider {
   opacity: 0;
-  transform: translate3d(0, 14px, 0);
-  filter: blur(4px);
+  transform: translate3d(0, 5px, 0);
+  filter: blur(1px);
   transition:
-    opacity 3.6s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 3.6s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 3.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.8s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform, filter;
   text-shadow: var(--soft-shadow);
 }
@@ -166,10 +166,10 @@ body {
 
 /* Последовательное появление */
 
-.delay-1 { transition-delay: 0.35s; }
-.delay-2 { transition-delay: 0.65s; }
-.delay-3 { transition-delay: 0.95s; }
-.delay-4 { transition-delay: 1.25s; }
+.delay-1 { transition-delay: 0.12s; }
+.delay-2 { transition-delay: 0.24s; }
+.delay-3 { transition-delay: 0.36s; }
+.delay-4 { transition-delay: 0.48s; }
 
 /* ==================================
    ПЕРВАЯ СЕКЦИЯ
@@ -293,11 +293,11 @@ body {
   gap: clamp(14px, 3.4vw, 30px);
 
   opacity: 0;
-  transform: translate3d(0, 12px, 0);
+  transform: translate3d(0, 4px, 0);
 
   transition:
-    opacity 3.6s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 3.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
 
   will-change: opacity, transform;
   text-shadow: var(--soft-shadow);
@@ -308,13 +308,13 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-.timing-item:nth-child(1) { transition-delay: 0.15s; }
-.timing-item:nth-child(2) { transition-delay: 0.4s; }
-.timing-item:nth-child(3) { transition-delay: 0.65s; }
-.timing-item:nth-child(4) { transition-delay: 0.9s; }
-.timing-item:nth-child(5) { transition-delay: 1.15s; }
-.timing-item:nth-child(6) { transition-delay: 1.4s; }
-.timing-item:nth-child(7) { transition-delay: 1.65s; }
+.timing-item:nth-child(1) { transition-delay: 0.04s; }
+.timing-item:nth-child(2) { transition-delay: 0.09s; }
+.timing-item:nth-child(3) { transition-delay: 0.14s; }
+.timing-item:nth-child(4) { transition-delay: 0.19s; }
+.timing-item:nth-child(5) { transition-delay: 0.24s; }
+.timing-item:nth-child(6) { transition-delay: 0.29s; }
+.timing-item:nth-child(7) { transition-delay: 0.34s; }
 
 .timing-time {
   font-family: 'Montserrat', sans-serif;
@@ -862,11 +862,11 @@ body {
 .guest-field {
   display: flex;
   opacity: 0;
-  transform: translate3d(0, 10px, 0);
-  filter: blur(3px);
-  transition: opacity 3.2s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 3.2s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 3.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translate3d(0, 4px, 0);
+  filter: blur(1px);
+  transition: opacity 1.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.7s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 1.7s cubic-bezier(0.22, 1, 0.36, 1);
   flex-direction: column;
   align-items: stretch;
   gap: 10px;
@@ -884,11 +884,11 @@ body {
   filter: blur(0);
 }
 
-.guest-field:nth-child(1) { transition-delay: .1s; }
-.guest-field:nth-child(2) { transition-delay: .18s; }
-.guest-field:nth-child(3) { transition-delay: .36s; }
-.guest-field:nth-child(4) { transition-delay: .54s; }
-.guest-field:nth-child(5) { transition-delay: .7s; }
+.guest-field:nth-child(1) { transition-delay: .04s; }
+.guest-field:nth-child(2) { transition-delay: .08s; }
+.guest-field:nth-child(3) { transition-delay: .12s; }
+.guest-field:nth-child(4) { transition-delay: .16s; }
+.guest-field:nth-child(5) { transition-delay: .20s; }
 
 .guest-field > label,
 .guest-question {
@@ -1243,8 +1243,8 @@ const revealObserver = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.01,
-    rootMargin: '0px 0px -8% 0px'
+    threshold: 0.06,
+    rootMargin: '0px 0px -3% 0px'
   }
 );
 
