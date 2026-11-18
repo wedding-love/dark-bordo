@@ -721,7 +721,7 @@ body {
   min-height: 100dvh;
   padding: clamp(70px, 10vh, 120px) clamp(20px, 6vw, 60px);
   background: #bcdbf4;
-  color: #263b50;
+  color: var(--burgundy);
   overflow: visible;
 }
 
@@ -731,14 +731,6 @@ body {
   margin: auto;
 }
 
-.dresscode-eyebrow {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(0.68rem, 1.6vw, 0.8rem);
-  font-weight: 300;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: #526d87;
-}
 
 .dresscode-head {
   font-family: 'Cormorant Garamond', serif;
@@ -746,7 +738,7 @@ body {
   font-weight: 400;
   font-size: clamp(2.5rem, 7.5vw, 4.6rem);
   line-height: 1.08;
-  color: #263b50;
+  color: var(--burgundy);
 }
 
 .dresscode-text {
@@ -756,7 +748,7 @@ body {
   font-size: clamp(1rem, 2.4vw, 1.2rem);
   line-height: 1.85;
   letter-spacing: 0.015em;
-  color: #354d65;
+  color: var(--burgundy);
   text-shadow: none;
 }
 
@@ -773,14 +765,6 @@ body {
   user-select: none;
 }
 
-.dresscode-note {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: clamp(1.25rem, 3vw, 1.7rem);
-  line-height: 1.45;
-  color: #405b75;
-  margin-top: 4px;
-}
 
 @media (max-width: 480px) {
   .section--five {
@@ -965,38 +949,25 @@ body {
 
     <div class="content content--five">
 
-      <span class="dresscode-eyebrow fade-in">
-        OUR WEDDING · 12.02.2027
-      </span>
-
-      <h2 class="dresscode-head fade-in delay-1">
+      <h2 class="dresscode-head fade-in">
         Дресс-код
       </h2>
 
-      <p class="dresscode-text fade-in delay-2">
-        Нам будет особенно приятно, если вы поддержите атмосферу нашего
-        праздника и выберете для своего образа оттенки из подготовленной
-        палитры.
-      </p>
-
-      <p class="dresscode-text fade-in delay-3">
-        Мы мечтаем, чтобы этот день получился лёгким, нежным и гармоничным,
-        а ваши образы стали частью общей красивой картины. Пусть выбранные
-        цвета вдохновят вас, но главное — выбирайте наряд, в котором вы
-        чувствуете себя уверенно и комфортно.
+      <p class="dresscode-text fade-in delay-1">
+        Нам будет особенно приятно, если вы поддержите атмосферу нашего праздника
+        и выберете для своего образа оттенки из подготовленной палитры. Мы мечтаем,
+        чтобы этот день получился лёгким, нежным и гармоничным, а ваши образы стали
+        частью общей красивой картины. Пусть выбранные цвета вдохновят вас, но главное —
+        выбирайте наряд, в котором вы чувствуете себя уверенно и комфортно.
       </p>
 
       <img
-        class="dresscode-palette-image fade-in delay-4"
+        class="dresscode-palette-image fade-in delay-2"
         src="Изображение 45-Photoroom.png"
         alt="Цветовая палитра дресс-кода свадьбы"
         loading="lazy"
         decoding="async"
       >
-
-      <p class="dresscode-note fade-in delay-4">
-        Будем счастливы разделить этот особенный день с вами!
-      </p>
 
     </div>
 
