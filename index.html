@@ -37,7 +37,6 @@ body {
   min-height: 100%;
   background-color: #1a1113;
   overflow-x: hidden;
-  animation: pageIn 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .section {
@@ -139,22 +138,22 @@ body {
 ================================== */
 
 .fade,
-.fade-in {
+.fade-in,
+.divider {
   opacity: 0;
-  transform: translate3d(0, 18px, 0);
-  filter: blur(7px);
-
+  transform: translate3d(0, 14px, 0);
+  filter: blur(4px);
   transition:
-    opacity 2.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 2.9s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 2.9s cubic-bezier(0.22, 1, 0.36, 1);
-
+    opacity 3.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 3.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 3.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
   text-shadow: var(--soft-shadow);
 }
 
 .fade.visible,
-.fade-in.visible {
+.fade-in.visible,
+.divider.visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
   filter: blur(0);
@@ -223,15 +222,13 @@ body {
   text-shadow: none;
   flex-shrink: 0;
   opacity: 0;
-  animation: dividerIn 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 2.8s;
-  transform: translateZ(0);
+  transform: translate3d(0, 8px, 0);
   backface-visibility: hidden;
 }
 
-@keyframes dividerIn {
-  from { opacity: 0; }
-  to { opacity: 0.45; }
+.divider.visible {
+  opacity: 0.45;
+  transform: translate3d(0, 0, 0);
 }
 
 .date {
@@ -299,8 +296,8 @@ body {
   transform: translate3d(0, 12px, 0);
 
   transition:
-    opacity 2.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 2.9s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 3.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 3.6s cubic-bezier(0.16, 1, 0.3, 1);
 
   will-change: opacity, transform;
   text-shadow: var(--soft-shadow);
@@ -865,11 +862,11 @@ body {
 .guest-field {
   display: flex;
   opacity: 0;
-  transform: translate3d(0, 12px, 0);
-  filter: blur(4px);
-  transition: opacity 2.2s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 2.2s cubic-bezier(0.22, 1, 0.36, 1),
-              filter 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translate3d(0, 10px, 0);
+  filter: blur(3px);
+  transition: opacity 3.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 3.2s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 3.2s cubic-bezier(0.16, 1, 0.3, 1);
   flex-direction: column;
   align-items: stretch;
   gap: 10px;
@@ -888,9 +885,9 @@ body {
 }
 
 .guest-field:nth-child(1) { transition-delay: .1s; }
-.guest-field:nth-child(2) { transition-delay: .25s; }
-.guest-field:nth-child(3) { transition-delay: .4s; }
-.guest-field:nth-child(4) { transition-delay: .55s; }
+.guest-field:nth-child(2) { transition-delay: .18s; }
+.guest-field:nth-child(3) { transition-delay: .36s; }
+.guest-field:nth-child(4) { transition-delay: .54s; }
 .guest-field:nth-child(5) { transition-delay: .7s; }
 
 .guest-field > label,
@@ -954,10 +951,35 @@ body {
   resize: vertical;
 }
 
-.guest-note {
+.guest-submit {
+  align-self: center;
+  min-width: 190px;
+  padding: 14px 34px;
+  border: 1px solid #530610;
+  border-radius: 2px;
+  background: #530610;
+  color: #ffffff;
+  font: 400 0.9rem 'Montserrat', sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+
+.guest-submit:hover,
+.guest-submit:focus-visible {
+  background: transparent;
   color: #530610;
-  font: 300 0.78rem/1.6 'Montserrat', sans-serif;
-  opacity: 0.8;
+  outline: none;
+}
+
+.guest-submit:active {
+  transform: translateY(1px);
+}
+
+.guest-submit:disabled {
+  opacity: 0.72;
+  cursor: default;
 }
 
 @media (max-width: 480px) {
@@ -1182,13 +1204,6 @@ body {
           </div>
         </fieldset>
 
-        <fieldset class="guest-field" style="border:0;">
-          <legend class="guest-question">Вы придёте один / одна или с сопровождающим?</legend>
-          <div class="guest-options">
-            <label class="guest-option"><input type="radio" name="companion" value="Один / одна"> Один / одна</label>
-            <label class="guest-option"><input type="radio" name="companion" value="С сопровождающим"> С сопровождающим</label>
-          </div>
-        </fieldset>
 
         <fieldset class="guest-field" style="border:0;">
           <legend class="guest-question">Какие напитки вы предпочитаете?</legend>
@@ -1200,12 +1215,7 @@ body {
           </div>
         </fieldset>
 
-        <div class="guest-field">
-          <label for="guest-wishes">Пожелания или особенности питания</label>
-          <textarea class="guest-textarea" id="guest-wishes" name="guest-wishes" placeholder="Ваш ответ (необязательно)"></textarea>
-        </div>
-
-        <p class="guest-note">Спасибо! Ваши ответы помогут нам сделать праздник комфортным для каждого.</p>
+        <button class="guest-submit" type="submit">Отправить</button>
 
       </form>
 
@@ -1222,41 +1232,52 @@ body {
    НАБЛЮДЕНИЕ ЗА ПОЯВЛЕНИЕМ ЭЛЕМЕНТОВ
 ================================== */
 
-const observer = new IntersectionObserver(
-
-  (entries) => {
-
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
     entries.forEach((entry) => {
-
-      if (entry.isIntersecting) {
-
+      if (entry.isIntersecting && entry.intersectionRatio > 0) {
         entry.target.classList.add('visible');
-
-        // После появления элемент больше не анимируется повторно
+        // Элемент плавно появляется один раз — когда действительно попадает в экран.
         observer.unobserve(entry.target);
-
       }
-
     });
-
   },
-
   {
-    threshold: 0.08,
-    rootMargin: '0px 0px -5% 0px'
+    threshold: 0.01,
+    rootMargin: '0px 0px -8% 0px'
   }
-
 );
 
-
-/* Подключаем анимацию ко всему тексту, фотографиям и кнопке */
-
+/* Все текстовые элементы, фотографии, разделитель, тайминг и поля анкеты
+   начинают анимацию только при появлении в видимой области экрана. */
 document.querySelectorAll(
-  '.fade, .fade-in, .timing-item, .guest-field'
-).forEach((element) => {
-  observer.observe(element);
-});
+  '.fade, .fade-in, .divider, .timing-item, .guest-field'
+).forEach((element) => revealObserver.observe(element));
 
+/* Обработка нажатия кнопки отправки анкеты */
+const guestForm = document.querySelector('.guest-form');
+
+if (guestForm) {
+  guestForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(guestForm);
+    const guestAnswers = {
+      name: formData.get('guest-name'),
+      attendance: formData.get('attendance'),
+      drinks: formData.getAll('drinks')
+    };
+
+    // Пока ответы доступны в консоли браузера.
+    // Для получения ответов организаторами подключите Google Sheets или Firebase.
+    console.log('Ответ гостя:', guestAnswers);
+    const submitButton = guestForm.querySelector('.guest-submit');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Отправлено';
+    submitButton.setAttribute('aria-live', 'polite');
+    alert('Спасибо! Ответ заполнен. Чтобы ответы поступали организаторам, необходимо подключить Google Sheets или Firebase.');
+  });
+}
 
 </script>
 
