@@ -37,7 +37,7 @@ body {
   min-height: 100%;
   background-color: #1a1113;
   overflow-x: hidden;
-  animation: pageIn 1.5s ease both;
+  animation: pageIn 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .section {
@@ -141,13 +141,13 @@ body {
 .fade,
 .fade-in {
   opacity: 0;
-  transform: translate3d(0, -35px, 0);
-  filter: blur(10px);
+  transform: translate3d(0, 18px, 0);
+  filter: blur(7px);
 
   transition:
-    opacity 2.8s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 2.8s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 2.8s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 2.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 2.9s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 2.9s cubic-bezier(0.22, 1, 0.36, 1);
 
   will-change: opacity, transform, filter;
   text-shadow: var(--soft-shadow);
@@ -167,10 +167,10 @@ body {
 
 /* Последовательное появление */
 
-.delay-1 { transition-delay: 0.45s; }
-.delay-2 { transition-delay: 0.85s; }
-.delay-3 { transition-delay: 1.2s; }
-.delay-4 { transition-delay: 1.55s; }
+.delay-1 { transition-delay: 0.35s; }
+.delay-2 { transition-delay: 0.65s; }
+.delay-3 { transition-delay: 0.95s; }
+.delay-4 { transition-delay: 1.25s; }
 
 /* ==================================
    ПЕРВАЯ СЕКЦИЯ
@@ -223,7 +223,7 @@ body {
   text-shadow: none;
   flex-shrink: 0;
   opacity: 0;
-  animation: dividerIn 2.2s ease forwards;
+  animation: dividerIn 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 2.8s;
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -296,11 +296,11 @@ body {
   gap: clamp(14px, 3.4vw, 30px);
 
   opacity: 0;
-  transform: translate3d(0, -25px, 0);
+  transform: translate3d(0, 12px, 0);
 
   transition:
-    opacity 2.2s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 2.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 2.9s cubic-bezier(0.22, 1, 0.36, 1);
 
   will-change: opacity, transform;
   text-shadow: var(--soft-shadow);
@@ -686,6 +686,7 @@ body {
   .fade,
   .fade-in,
   .timing-item,
+  .guest-field,
   .divider,
   body {
     animation-duration: 0.01ms !important;
@@ -699,6 +700,7 @@ body {
   .fade,
   .fade-in,
   .timing-item,
+  .guest-field,
   body {
     opacity: 1 !important;
   }
@@ -793,6 +795,184 @@ body {
     min-height: auto;
     padding: 48px 6vw;
   }
+}
+
+
+/* ==================================
+   ШЕСТАЯ СЕКЦИЯ — АНКЕТА ГОСТЯ
+================================== */
+
+.section--six {
+  height: auto;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding: clamp(58px, 9vh, 100px) clamp(18px, 6vw, 60px);
+  overflow: visible;
+  background: #f7f1f1;
+}
+
+.bg-six {
+  background-image:
+    linear-gradient(rgba(250, 245, 245, 0.28), rgba(250, 245, 245, 0.28)),
+    url('Изображение 48.jpeg');
+  background-position: center center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.content--six {
+  max-width: 720px;
+  gap: clamp(18px, 2.8vh, 30px);
+  color: #530610;
+  margin: auto;
+}
+
+.guest-head {
+  color: #530610;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 7.5vw, 4.5rem);
+  line-height: 1.08;
+}
+
+.guest-intro {
+  max-width: 560px;
+  color: #530610;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.95rem, 2.3vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.guest-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 22px;
+  width: 100%;
+  max-width: 600px;
+  padding: clamp(20px, 4vw, 38px);
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(83, 6, 16, 0.16);
+  border-radius: 3px;
+  text-align: left;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.guest-field {
+  display: flex;
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  filter: blur(4px);
+  transition: opacity 2.2s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 2.2s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+  color: #530610;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.guest-field.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+
+.guest-field:nth-child(1) { transition-delay: .1s; }
+.guest-field:nth-child(2) { transition-delay: .25s; }
+.guest-field:nth-child(3) { transition-delay: .4s; }
+.guest-field:nth-child(4) { transition-delay: .55s; }
+.guest-field:nth-child(5) { transition-delay: .7s; }
+
+.guest-field > label,
+.guest-question {
+  color: #530610;
+  font-size: 0.98rem;
+  font-weight: 400;
+}
+
+.guest-input,
+.guest-select,
+.guest-textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid rgba(83, 6, 16, 0.38);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #530610;
+  font: 300 0.95rem 'Montserrat', sans-serif;
+  outline: none;
+  transition: border-color 0.45s ease, background-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.guest-input:focus,
+.guest-select:focus,
+.guest-textarea:focus {
+  border-color: #530610;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(83, 6, 16, 0.08);
+}
+
+.guest-options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+  padding-top: 2px;
+}
+
+.guest-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #530610;
+  font-size: 0.92rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.guest-option input {
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  accent-color: #530610;
+  flex: 0 0 auto;
+}
+
+.guest-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.guest-note {
+  color: #530610;
+  font: 300 0.78rem/1.6 'Montserrat', sans-serif;
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .section--six {
+    min-height: auto;
+    padding: 64px 5vw;
+  }
+  .content--six { gap: 18px; }
+  .guest-head { font-size: clamp(2.25rem, 9vw, 3.2rem); }
+  .guest-form { gap: 19px; padding: 20px 16px; }
+  .guest-field { font-size: 0.9rem; }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .section--six { min-height: auto; padding: 44px 6vw; }
 }
 
 </style>
@@ -970,6 +1150,69 @@ body {
 
   </section>
 
+
+  <!-- СЕКЦИЯ 6: АНКЕТА ГОСТЯ -->
+
+  <section class="section section--six">
+
+    <div class="section__bg bg-six"></div>
+
+    <div class="content content--six">
+
+      <h2 class="guest-head fade-in">
+        Анкета гостя
+      </h2>
+
+      <p class="guest-intro fade-in delay-1">
+        Пожалуйста, ответьте на несколько вопросов, чтобы мы могли подготовиться к празднику.
+      </p>
+
+      <form class="guest-form fade-in delay-2">
+
+        <div class="guest-field">
+          <label for="guest-name">Ваше имя и фамилия</label>
+          <input class="guest-input" id="guest-name" name="guest-name" type="text" placeholder="Имя и фамилия" autocomplete="name" required>
+        </div>
+
+        <fieldset class="guest-field" style="border:0;">
+          <legend class="guest-question">Сможете ли вы присутствовать на нашей свадьбе?</legend>
+          <div class="guest-options">
+            <label class="guest-option"><input type="radio" name="attendance" value="Буду с радостью" required> Да, с радостью буду!</label>
+            <label class="guest-option"><input type="radio" name="attendance" value="Не смогу присутствовать"> К сожалению, не смогу присутствовать</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="guest-field" style="border:0;">
+          <legend class="guest-question">Вы придёте один / одна или с сопровождающим?</legend>
+          <div class="guest-options">
+            <label class="guest-option"><input type="radio" name="companion" value="Один / одна"> Один / одна</label>
+            <label class="guest-option"><input type="radio" name="companion" value="С сопровождающим"> С сопровождающим</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="guest-field" style="border:0;">
+          <legend class="guest-question">Какие напитки вы предпочитаете?</legend>
+          <div class="guest-options">
+            <label class="guest-option"><input type="checkbox" name="drinks" value="Шампанское"> Шампанское</label>
+            <label class="guest-option"><input type="checkbox" name="drinks" value="Вино"> Вино</label>
+            <label class="guest-option"><input type="checkbox" name="drinks" value="Крепкие напитки"> Крепкие напитки</label>
+            <label class="guest-option"><input type="checkbox" name="drinks" value="Безалкогольные напитки"> Безалкогольные напитки</label>
+          </div>
+        </fieldset>
+
+        <div class="guest-field">
+          <label for="guest-wishes">Пожелания или особенности питания</label>
+          <textarea class="guest-textarea" id="guest-wishes" name="guest-wishes" placeholder="Ваш ответ (необязательно)"></textarea>
+        </div>
+
+        <p class="guest-note">Спасибо! Ваши ответы помогут нам сделать праздник комфортным для каждого.</p>
+
+      </form>
+
+    </div>
+
+  </section>
+
 </main>
 
 
@@ -1009,39 +1252,11 @@ const observer = new IntersectionObserver(
 /* Подключаем анимацию ко всему тексту, фотографиям и кнопке */
 
 document.querySelectorAll(
-  '.fade, .fade-in, .timing-item'
+  '.fade, .fade-in, .timing-item, .guest-field'
 ).forEach((element) => {
-
   observer.observe(element);
-
 });
 
-
-/* ==================================
-   ЛЁГКОЕ ДВИЖЕНИЕ ИМЁН
-================================== */
-
-window.addEventListener('load', () => {
-
-  const names = document.querySelector('.names');
-
-  if (!names) return;
-
-  setTimeout(() => {
-
-    names.style.transition = 'transform 6s ease-in-out';
-
-    names.style.transform = 'translateY(-3px)';
-
-    setTimeout(() => {
-
-      names.style.transform = 'translateY(0)';
-
-    }, 3000);
-
-  }, 4500);
-
-});
 
 </script>
 
